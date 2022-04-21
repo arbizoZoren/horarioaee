@@ -1,4 +1,4 @@
-# Import Required Library
+# Bibliotecas necesarias
 from cgi import test
 from tkinter import *
 from tkcalendar import Calendar  
@@ -35,6 +35,7 @@ class SampleApp(Tk):
         frame = self.frames[page_name]
         frame.tkraise()
 
+#Frame del calendario
 class PCalendario(Frame):
 
     def __init__(self, parent, controller):
@@ -71,6 +72,7 @@ class PCalendario(Frame):
         frm_calendario.pack()
         #frm_calendario.grid(row=2, column=0, sticky="ew")
 
+#Frame de las Clases
 class PClase(Frame):
 
     def __init__(self, parent, controller):
@@ -85,8 +87,9 @@ class PClase(Frame):
         btn_clientes.pack(side=LEFT)
         frm_buttons.pack(fill=BOTH)
 
+        #Información de la Clase
         frm_clase = Frame(self)
-        label = Label(frm_clase, text="Clase de la Fecha", font=controller.title_font)
+        label = Label(frm_clase, text="Clase de la Fecha ", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
 
         datos = ["Cliente", 
@@ -100,6 +103,7 @@ class PClase(Frame):
             entradas.pack(pady=5)
         frm_clase.pack()
 
+        #Botones de opciones
         frm_clase_botones = Frame(self)
         btn_agregar = Button(frm_clase_botones, text = "Agregar Asistente", command=lambda: controller.show_frame("PAgregarAsistente"))
         btn_remover = Button(frm_clase_botones, text = "Remover Asistente")
@@ -109,6 +113,7 @@ class PClase(Frame):
         btn_regresar.pack(padx=5, pady=15, side=LEFT)
         frm_clase_botones.pack()
 
+#Frame para agregar asistentes a la clase
 class PAgregarAsistente(Frame):
 
     def __init__(self, parent, controller):
@@ -123,6 +128,7 @@ class PAgregarAsistente(Frame):
         btn_clientes.pack(side=LEFT)
         frm_buttons.pack(fill=BOTH)
 
+        #Ingreso del asistente
         frm_agregar = Frame(self)
         label = Label(frm_agregar, text="Agregar Cliente Asistente", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
@@ -135,12 +141,14 @@ class PAgregarAsistente(Frame):
         btn_agregar.pack(side=LEFT)
         frm_agregar.pack()
 
+        #Botón de regreso
         frm_regreso = Frame(self)
         btn_regresar = Button(frm_regreso, text="Regresar",
                            command=lambda: controller.show_frame("PClase"))
         btn_regresar.pack(pady=15)
         frm_regreso.pack()
 
+#Frame para mostrar clientes registrados. Quiero usar .json para registrar los clientes y las clases pero no creo que completaré esto a tiempo
 class PClientes(Frame):
 
     def __init__(self, parent, controller):
@@ -160,7 +168,7 @@ class PClientes(Frame):
         #btn_clientes.grid(row=0, column=1, sticky="nw")
         #frm_buttons.grid(row=0, column=0, sticky="nw")
         
-
+        #Datos de Clientes
         frm_clientes_datos = Label(self)
         label = Label(frm_clientes_datos, text="Clientes", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
@@ -177,6 +185,7 @@ class PClientes(Frame):
             entradas.pack(pady=5)
         frm_clientes_datos.pack()
 
+        #Botones de opcioes
         frm_clientes_botones = Frame(self)
         btn_agregar = Button(frm_clientes_botones, text = "Agregar Cliente", command=lambda: controller.show_frame("PAgregarCliente"))
         btn_modificar = Button(frm_clientes_botones, text = "Modificar Cliente", command=lambda: controller.show_frame("PModificarCliente"))
@@ -188,6 +197,7 @@ class PClientes(Frame):
         btn_regresar.pack(padx=5, pady=15, side=LEFT)
         frm_clientes_botones.pack()
 
+#Frame para agregar clientes
 class PAgregarCliente(Frame):
 
     def __init__(self, parent, controller):
@@ -202,6 +212,7 @@ class PAgregarCliente(Frame):
         btn_clientes.pack(side=LEFT)
         frm_buttons.pack(fill=BOTH)
 
+        #Entrar datos
         frm_agregar_cliente = Frame(self, relief=RAISED, bd=3)
         label = Label(frm_agregar_cliente, text="Agregar Cliente", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
@@ -219,6 +230,7 @@ class PAgregarCliente(Frame):
             frm.pack()
         frm_agregar_cliente.pack()
 
+        #Botones de opciones
         frm_botones = Frame(self)
         btn_agregar = Button(frm_botones, text="Agregar")
         btn_agregar.pack(side=LEFT, pady=15)
@@ -226,6 +238,7 @@ class PAgregarCliente(Frame):
         btn_regresar.pack(side=LEFT, pady=15)
         frm_botones.pack()
 
+#Frame para modificar clientes
 class PModificarCliente(Frame):
 
     def __init__(self, parent, controller):
@@ -240,6 +253,7 @@ class PModificarCliente(Frame):
         btn_clientes.pack(side=LEFT)
         frm_buttons.pack(fill=BOTH)
 
+        #Entrar datos para modificar
         frm_agregar_cliente = Frame(self, relief=RAISED, bd=3)
         label = Label(frm_agregar_cliente, text="Modificar Cliente", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
@@ -257,6 +271,7 @@ class PModificarCliente(Frame):
             frm.pack()
         frm_agregar_cliente.pack()
 
+        #Botones de opciones
         frm_botones = Frame(self)
         btn_agregar = Button(frm_botones, text="Actualizar")
         btn_agregar.pack(side=LEFT, pady=15)
@@ -264,6 +279,7 @@ class PModificarCliente(Frame):
         btn_regresar.pack(side=LEFT, pady=15)
         frm_botones.pack()
 
+#Iniciar aplicación
 if __name__ == "__main__":
     app = SampleApp()
     app.title("Calendario para Actividad en Equilibrio")
