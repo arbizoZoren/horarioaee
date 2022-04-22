@@ -1,4 +1,5 @@
 # horarioaee
 homework
-it's something for my parents
-es algo para mis padres
+
+build and dist folders make the executable work
+main file is actividadenequilibrio.py
